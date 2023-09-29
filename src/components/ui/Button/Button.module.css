@@ -1,0 +1,35 @@
+.button {
+  --color: #fff;
+  --background-color: var(--main-color);
+  color: var(--color);
+  background-color: var(--background-color);
+  padding: 0.4rem 0.9rem;
+  border-radius: 5px;
+  box-shadow: 0 0 0 1px var(--color);
+  transition: 0.3s;
+}
+
+button.button svg,
+a.button svg {
+  color: var(--color);
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: var(--color);
+  color: var(--background-color);
+  box-shadow: 0 0 0 1px var(--background-color);
+}
+
+button.button:hover svg,
+a.button:hover svg {
+  color: var(--background-color);
+}
+
+.button:disabled {
+  box-shadow: 0 0 0 1px var(--light-gray);
+  color: var(--light-gray);
+  background-color: #fff;
+  pointer-events: none;
+  cursor: not-allowed;
+}

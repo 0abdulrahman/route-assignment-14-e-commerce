@@ -1,0 +1,12 @@
+header {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+:global(.active) {
+  color: var(--main-color) !important;
+  font-weight: 500;
+}
+
+.socials a svg {
+  color: var(--dark-gray);
+}

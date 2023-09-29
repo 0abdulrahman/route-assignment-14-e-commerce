@@ -1,0 +1,135 @@
+.productImg {
+  max-height: 300px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.productImg img {
+  transform: scale(1.2);
+}
+
+.product > a {
+  border-radius: 5px;
+  display: block;
+  transition: 0.3s;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product > a {
+  position: relative;
+}
+
+.product .buttons {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+}
+
+.product .buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  justify-content: space-between;
+  padding: 0.5rem;
+}
+
+.product .buttons > * {
+  font-size: 1.25rem;
+  opacity: 0;
+  transition: 0.3s;
+  position: relative;
+  z-index: 2;
+}
+
+.product .buttons > * {
+  transform: translateX(-30%);
+}
+
+.product .buttons button {
+  color: #fff;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.product .buttons .addToCart button {
+  background-color: var(--main-color);
+  color: #fff;
+}
+
+.product .buttons .addToWish button {
+  background-color: var(--red);
+}
+
+.product:hover .buttons > * {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.product .buttons .addToCart small {
+  color: var(--main-color);
+}
+
+.product .buttons .addToWish small {
+  color: var(--red);
+}
+
+.product .buttons small {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background-color: #fff;
+  z-index: -1;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+  max-width: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: 0.3s;
+  font-size: calc(0.7rem + 0.25vw);
+}
+
+.product .buttons > *:hover small {
+  max-width: 170px;
+  padding: 0.5rem;
+  padding-inline: 0.75rem;
+  padding-left: 45px;
+}
+
+.product .buttons > *:first-child:hover small {
+  box-shadow: 0 0 0 1px var(--main-color);
+}
+
+.product .buttons > *:last-child:hover small {
+  box-shadow: 0 0 0 1px var(--red);
+}
+
+.product > a:hover {
+  box-shadow: 0 0 0 1px var(--main-color), 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.product .text {
+  padding: 0.75rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.product .footer svg {
+  color: var(--gold);
+}
+
+.product .text .footer {
+  margin-top: auto;
+}
