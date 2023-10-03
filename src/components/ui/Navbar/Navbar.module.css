@@ -10,3 +10,26 @@ header {
 .socials a svg {
   color: var(--dark-gray);
 }
+
+.cartButton {
+  position: relative;
+}
+
+.cartButton svg {
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.cartButton::after {
+  position: absolute;
+  content: attr(data-cart-items);
+  top: 0;
+  right: 0;
+  transform: translate(30%, -30%);
+  padding: 0.25rem;
+  border-radius: 5px;
+  line-height: 1;
+  background-color: var(--main-color);
+  color: #fff;
+  font-size: calc(0.8rem + 0.1vw);
+}

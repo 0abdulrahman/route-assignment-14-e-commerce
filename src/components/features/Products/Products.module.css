@@ -119,17 +119,17 @@
   box-shadow: 0 0 0 1px var(--main-color), 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
-.product .text {
+.text {
   padding: 0.75rem;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
-.product .footer svg {
+.footer svg {
   color: var(--gold);
 }
 
-.product .text .footer {
+.text .footer {
   margin-top: auto;
 }

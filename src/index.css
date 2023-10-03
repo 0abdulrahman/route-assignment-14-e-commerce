@@ -32,6 +32,10 @@ input {
   background-color: transparent;
 }
 
+ul {
+  padding: 0;
+}
+
 .objectFit-cover {
   object-fit: cover;
   height: 100%;

@@ -91,9 +91,7 @@ function Register() {
     >
       <h2 className="text-center border-bottom border-bottom-1 pb-4">Create an account</h2>
       <div className="form-group">
-        <label name="name" htmlFor="name">
-          Name:
-        </label>
+        <label htmlFor="name">Name:</label>
         <input
           type="text"
           className={`form-control ${formik.errors.name && formik.touched.name ? "is-invalid" : ""}`}
@@ -105,9 +103,7 @@ function Register() {
         <p className="invalid-feedback mb-0">{formik.errors.name}</p>
       </div>
       <div className="form-group">
-        <label name="email" htmlFor="email">
-          Email:
-        </label>
+        <label htmlFor="email">Email:</label>
         <input
           type="email"
           className={`form-control ${formik.errors.email && formik.touched.email ? "is-invalid" : ""}`}
@@ -119,9 +115,7 @@ function Register() {
         <p className="invalid-feedback mb-0">{formik.errors.email}</p>
       </div>
       <div className="form-group">
-        <label name="phone" htmlFor="phone">
-          Phone number:
-        </label>
+        <label htmlFor="phone">Phone number:</label>
         <input
           type="tel"
           className={`form-control ${formik.errors.phone && formik.touched.phone ? "is-invalid" : ""}`}
@@ -133,9 +127,7 @@ function Register() {
         <p className="invalid-feedback mb-0">{formik.errors.phone}</p>
       </div>
       <div className="form-group">
-        <label name="" htmlFor="password">
-          Password:
-        </label>
+        <label htmlFor="password">Password:</label>
         <input
           type="password"
           className={`form-control ${formik.errors.password && formik.touched.password ? "is-invalid" : ""}`}
@@ -147,9 +139,7 @@ function Register() {
         <p className="invalid-feedback mb-0">{formik.errors.password}</p>
       </div>
       <div className="form-group">
-        <label name="rePassword" htmlFor="rePassword">
-          Password confirmation:
-        </label>
+        <label htmlFor="rePassword">Password confirmation:</label>
         <input
           type="password"
           className={`form-control ${formik.errors.rePassword && formik.touched.rePassword ? "is-invalid" : ""}`}

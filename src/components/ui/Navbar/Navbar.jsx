@@ -6,10 +6,13 @@ import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import Button from "../Button/Button";
 import { useContext } from "react";
 import { userContext } from "../../context/UserContext";
+import { AiOutlineShoppingCart } from "react-icons/ai";
+import { CartContext } from "../../context/CartContext";
 
 function Navbar() {
   const { user, setUser } = useContext(userContext);
   const navigate = useNavigate();
+  const { cart } = useContext(CartContext);
 
   function handleLogout() {
     setUser(null);
@@ -39,11 +42,6 @@ function Navbar() {
               <li className="nav-item">
                 <NavLink className="nav-link" to="/">
                   Home
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/cart">
-                  Cart
                 </NavLink>
               </li>
               <li className="nav-item">
@@ -85,6 +83,9 @@ function Navbar() {
                   </a>
                 </li>
               </ul>
+              <Link to="/cart" className={styles.cartButton} data-cart-items={cart?.data?.numOfCartItems}>
+                <AiOutlineShoppingCart />
+              </Link>
               {user ? (
                 <Button
                   handleClick={handleLogout}

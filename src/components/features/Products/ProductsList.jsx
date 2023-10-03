@@ -3,8 +3,23 @@ import styles from "./Products.module.css";
 import { AiFillStar } from "react-icons/ai";
 import { IoMdAdd } from "react-icons/io";
 import { FaHeartCirclePlus } from "react-icons/fa6";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
 
 function ProductsList({ products }) {
+  const { addToCart } = useContext(CartContext);
+
+  async function handleAddToCart(e, productId) {
+    e.preventDefault();
+    const res = await addToCart(productId);
+    console.log(res);
+  }
+
+  function handleAddToWish(e) {
+    e.preventDefault();
+    console.log("clicked");
+  }
+
   return (
     <ul className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-6 g-4 list-unstyled">
       {products?.map((product) => (
@@ -27,14 +42,15 @@ function ProductsList({ products }) {
                 </span>
               </div>
             </div>
+
             <div className={styles.buttons}>
-              <div className={styles.addToCart}>
+              <div className={styles.addToCart} onClick={(e) => handleAddToCart(e, product._id)}>
                 <button>
                   <IoMdAdd />
                 </button>{" "}
                 <small>Add to cart</small>
               </div>
-              <div className={styles.addToWish}>
+              <div className={styles.addToWish} onClick={handleAddToWish}>
                 <button>
                   <FaHeartCirclePlus />
                 </button>{" "}
