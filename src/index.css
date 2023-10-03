@@ -22,7 +22,12 @@ body {
   color: var(--dark-gray);
 }
 
-button {
+*:focus {
+  outline: none;
+}
+
+button,
+input {
   border: none;
   background-color: transparent;
 }

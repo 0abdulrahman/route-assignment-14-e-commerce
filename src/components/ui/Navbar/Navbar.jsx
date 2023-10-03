@@ -1,15 +1,23 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import logo from "../../../assets/images/freshcart-logo.svg";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
-import { BiLogOut } from "react-icons/bi";
+import { BiLogInCircle, BiLogOutCircle } from "react-icons/bi";
 import Button from "../Button/Button";
+import { useContext } from "react";
+import { userContext } from "../../context/UserContext";
 
 function Navbar() {
-  console.log("Navbar render");
+  const { user, setUser } = useContext(userContext);
+  const navigate = useNavigate();
 
+  function handleLogout() {
+    setUser(null);
+    localStorage.removeItem("userToken");
+    navigate("/login");
+  }
   return (
-    <header className="fixed-top bg-body-tertiary ">
+    <header className="fixed-top bg-body-tertiary">
       <nav className="navbar navbar-expand-lg container">
         <div className="container-fluid">
           <Link className="navbar-brand" href="#">
@@ -77,14 +85,35 @@ function Navbar() {
                   </a>
                 </li>
               </ul>
-              <Button
-                handleClick={() => console.log("logout clicked")}
-                moreStyles={{ "--color": "var(--main-color)", "--background-color": "#fff" }}
-                type="link"
-                to="/register"
-              >
-                Register
-              </Button>
+              {user ? (
+                <Button
+                  handleClick={handleLogout}
+                  moreStyles={{
+                    "--color": "var(--main-color)",
+                    "--background-color": "#fff",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.25rem",
+                  }}
+                >
+                  <BiLogOutCircle style={{ fontSize: "1.25rem" }} /> Logout
+                </Button>
+              ) : (
+                <Button
+                  moreStyles={{
+                    "--color": "var(--main-color)",
+                    "--background-color": "#fff",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.25rem",
+                  }}
+                  type="link"
+                  to="/login"
+                >
+                  <BiLogInCircle style={{ fontSize: "1.25rem" }} />
+                  Login
+                </Button>
+              )}
             </div>
           </div>
         </div>

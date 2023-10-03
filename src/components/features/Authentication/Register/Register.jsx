@@ -1,43 +1,20 @@
-import styles from "./Register.module.css";
-import Button from "../../ui/Button/Button";
-import { useReducer, useState } from "react";
+import Button from "../../../ui/Button/Button";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-// const initialState = {
-//   name: "",
-//   email: "",
-//   phone: "",
-//   password: "",
-//   rePassword: "",
-//   error: "",
-// };
-
-// function reducer(state, action) {
-//   switch (action.type) {
-//     case "changeName":
-//       return { ...state, name: action.payload };
-//     case "changeEmail":
-//       return { ...state, email: action.payload };
-//     case "changePhone":
-//       return { ...state, phone: action.payload };
-//     case "changePassword":
-//       return { ...state, password: action.payload };
-//     case "changeRePassword":
-//       return { ...state, rePassword: action.payload };
-//     case "setError":
-//       return { ...state, error: action.payload };
-//     case "reset":
-//       return initialState;
-//     default:
-//       throw new Error("Unknown action type.");
-//   }
-// }
+import { Link, useNavigate } from "react-router-dom";
+import { userContext } from "../../../context/UserContext";
 
 function Register() {
-  // const [state, dispatch] = useReducer(reducer, initialState);
   const [error, setError] = useState("");
+  const { user } = useContext(userContext);
+  const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    if (user) navigate("/");
+  }, [navigate, user]);
 
   const initialValues = {
     name: "",
@@ -88,10 +65,10 @@ function Register() {
   }
 
   async function handleSubmit(values) {
-    console.log(values);
     try {
-      const res = await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", values);
-      console.log(res);
+      setLoading(true);
+      await axios.post("https://ecommerce.routemisr.com/api/v1/auth/signup", values);
+      navigate("/login");
     } catch (error) {
       if (error?.response?.data?.errors?.msg) {
         setError(error.response.data.errors.msg);
@@ -100,11 +77,19 @@ function Register() {
       } else {
         setError(error.message);
       }
+    } finally {
+      setLoading(false);
     }
   }
 
   return (
-    <form method="POST" className="container mt-5 d-flex flex-column gap-3" onSubmit={formik.handleSubmit}>
+    <form
+      method="POST"
+      className="container mt-5 d-flex flex-column gap-3"
+      style={{ maxWidth: "50rem" }}
+      onSubmit={formik.handleSubmit}
+    >
+      <h2 className="text-center border-bottom border-bottom-1 pb-4">Create an account</h2>
       <div className="form-group">
         <label name="name" htmlFor="name">
           Name:
@@ -177,7 +162,9 @@ function Register() {
       </div>
       {error && <p className="alert alert-danger py-1 text-center mb-0">{error}</p>}
       <div className="d-flex justify-content-center gap-2 mt-4">
-        <Button moreClasses="px-4" type="submit" disabled={!formik.isValid || !formik.dirty} />
+        <Button moreClasses="px-4" type="submit" disabled={!formik.isValid || !formik.dirty || loading}>
+          {loading ? "Creating" : "Create"}
+        </Button>
         <Button
           moreStyles={{ "--color": "var(--main-color)", "--background-color": "#fff" }}
           type="reset"
@@ -186,6 +173,12 @@ function Register() {
           Reset
         </Button>
       </div>
+      <p className="small text-center mt-4 mb-0">
+        Already have an account?{" "}
+        <Link style={{ color: "var(--main-color)", fontWeight: "500" }} to="/login">
+          Login
+        </Link>
+      </p>
     </form>
   );
 }

@@ -7,7 +7,8 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
 import Home, { loader as homeLoader } from "./components/pages/Home/Home";
 import Products from "./components/pages/Products/Products";
-import Register from "./components/pages/Register/Register";
+import Register from "./components/features/Authentication/Register/Register";
+import Login, { action as loginAction } from "./components/features/Authentication/Login/Login";
 
 const router = createBrowserRouter(
   [
@@ -18,6 +19,7 @@ const router = createBrowserRouter(
         { index: true, element: <Home />, loader: homeLoader },
         { path: "/products", element: <Products /> },
         { path: "/register", element: <Register /> },
+        { path: "/login", element: <Login />, action: loginAction },
       ],
     },
   ],
