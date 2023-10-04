@@ -27,13 +27,25 @@ body {
 }
 
 button,
-input {
+input,
+textarea {
   border: none;
   background-color: transparent;
 }
 
 ul {
   padding: 0;
+  list-style: none;
+}
+
+button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+button svg {
+  font-size: 1.2rem;
 }
 
 .objectFit-cover {

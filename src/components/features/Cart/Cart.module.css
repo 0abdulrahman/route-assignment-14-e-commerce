@@ -14,15 +14,67 @@
 }
 
 .cart .img {
-  width: calc(100px + 3vw);
+  width: calc(80px + 3vw);
   height: 150px;
   background-color: var(--main-color);
   border-radius: 10px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .cart .img img {
   height: 100%;
   width: 100%;
   object-fit: cover;
+}
+
+/* Checkout Styles */
+
+.form {
+  background-color: var(--lighter-gray);
+  max-width: 30rem;
+  padding: calc(1rem + 2vw);
+  margin-top: 5rem;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form .inputGroup {
+  display: flex;
+}
+
+.form .inputGroup {
+  border: 1px solid var(--main-color);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.form .inputGroup label {
+  background-color: var(--main-color);
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(1rem + 0.5vw);
+}
+
+.form .inputGroup :is(input, textarea) {
+  flex-grow: 1;
+  padding-left: 0.5rem;
+  background-color: #fff;
+}
+
+.form .inputGroup textarea {
+  min-height: 120px;
+  max-height: 400px;
+  overflow: auto;
+}
+
+:global(.form-check-input:checked) {
+  background-color: var(--main-color);
+  border-color: var(--main-color);
 }

@@ -3,9 +3,12 @@ import styles from "./Cart.module.css";
 import CartItem from "./CartItem";
 import { CartContext } from "../../context/CartContext";
 import Spinner from "../../ui/Spinner/Spinner";
+import Button from "../../ui/Button/Button";
+import { FiTrash2 } from "react-icons/fi";
+import { IoBagCheckOutline } from "react-icons/io5";
 
 function Cart() {
-  const { cart, getUserCart, loading } = useContext(CartContext);
+  const { cart, getUserCart, clearCart, loading } = useContext(CartContext);
 
   useEffect(() => {
     (async () => {
@@ -25,6 +28,16 @@ function Cart() {
           <CartItem cartItem={product} key={product._id} />
         ))}
       </ul>
+      {cart?.data?.numOfCartItems > 0 && (
+        <div className="d-flex justify-content-between">
+          <button className="btn btn-danger" onClick={clearCart}>
+            <FiTrash2 /> Clear cart
+          </button>
+          <Button type="link" to="checkout">
+            <IoBagCheckOutline /> Checkout
+          </Button>
+        </div>
+      )}
     </section>
   );
 }

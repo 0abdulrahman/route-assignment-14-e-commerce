@@ -59,6 +59,11 @@ function Navbar() {
                   Brands
                 </NavLink>
               </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/allorders">
+                  Orders
+                </NavLink>
+              </li>
             </ul>
             <div className={`${styles.socials} d-flex align-items-center gap-4`}>
               <ul className="d-flex list-unstyled gap-3 fs-5 mb-0">
@@ -83,7 +88,11 @@ function Navbar() {
                   </a>
                 </li>
               </ul>
-              <Link to="/cart" className={styles.cartButton} data-cart-items={cart?.data?.numOfCartItems}>
+              <Link
+                to="/cart"
+                className={styles.cartButton}
+                data-cart-items={cart?.data?.numOfCartItems ? cart?.data?.numOfCartItems : ""}
+              >
                 <AiOutlineShoppingCart />
               </Link>
               {user ? (

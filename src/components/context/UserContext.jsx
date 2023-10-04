@@ -6,6 +6,7 @@ export const userContext = createContext();
 // 2- Create the provider
 function UserProvider({ children }) {
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     const token = localStorage.getItem("userToken");
     if (token) setUser({ token: token });

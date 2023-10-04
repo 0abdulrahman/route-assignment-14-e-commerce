@@ -6,12 +6,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./index.css";
 import Home from "./components/pages/Home/Home";
-import ProductsLayout from "./components/pages/Products/ProductsLayout";
+import ProductsLayout from "./components/pages/ProductsLayout";
 import Register from "./components/features/Authentication/Register/Register";
 import Login, { action as loginAction } from "./components/features/Authentication/Login/Login";
 import Products from "./components/features/Products/Products";
 import Product, { loader as productLoader } from "./components/features/Products/Product";
 import Cart from "./components/features/Cart/Cart";
+import CartLayout from "./components/pages/CartLayout";
+import Checkout from "./components/features/Cart/Checkout";
+import Orders from "./components/features/Cart/Orders";
 
 const router = createBrowserRouter(
   [
@@ -27,7 +30,15 @@ const router = createBrowserRouter(
             { path: ":productId", element: <Product />, loader: productLoader },
           ],
         },
-        { path: "cart", element: <Cart /> },
+        {
+          path: "cart",
+          element: <CartLayout />,
+          children: [
+            { index: true, element: <Cart /> },
+            { path: "checkout", element: <Checkout /> },
+          ],
+        },
+        { path: "allorders", element: <Orders /> },
         { path: "register", element: <Register /> },
         { path: "login", element: <Login />, action: loginAction },
       ],

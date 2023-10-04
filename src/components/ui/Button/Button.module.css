@@ -3,16 +3,23 @@
   --background-color: var(--main-color);
   color: var(--color);
   background-color: var(--background-color);
-  padding: 0.4rem 0.9rem;
+  padding: 0.5rem 0.9rem;
   border-radius: 5px;
   box-shadow: 0 0 0 1px var(--color);
   transition: 0.3s;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1;
 }
 
 button.button svg,
 a.button svg {
   color: var(--color);
   transition: 0.3s;
+  font-size: 1.2rem;
 }
 
 .button:hover {
