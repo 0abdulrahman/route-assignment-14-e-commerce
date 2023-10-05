@@ -50,7 +50,7 @@ function Products() {
       </form>
       <section className="container">
         <ProductsList products={filteredProducts} />
-        {error && <p className="text-danger mb-0">Couldn't fetch the data</p>}
+        {error && <p className="text-danger mb-0">Couldn't get the products, please refresh the page</p>}
         {loading && <Spinner />}
       </section>
     </>

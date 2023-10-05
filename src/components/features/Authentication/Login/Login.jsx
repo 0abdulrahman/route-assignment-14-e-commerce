@@ -26,28 +26,37 @@ function Login() {
 
   return (
     <Form className={`container ${styles.form}`} method="POST">
+      <h2 className="text-center border-bottom border-bottom-1 pb-4">Login</h2>
+
       <div className={`input-group ${styles.inputGroup}`}>
         <label htmlFor="email">
           <MdAlternateEmail />
         </label>
-        <input name="email" type="email" id="email" placeholder="Email" aria-label="Email" />
+        <input name="email" type="email" id="email" placeholder="Email" aria-label="Email" required />
       </div>
       <div className={`input-group ${styles.inputGroup}`}>
         <label htmlFor="password">
           <BsShieldLockFill />
         </label>
-        <input name="password" type="password" id="password" placeholder="Password" aria-label="Password" />
+        <input name="password" type="password" id="password" placeholder="Password" aria-label="Password" required />
       </div>
       {actionData?.status === "error" && <small className="alert alert-danger py-2 m-0">{actionData?.data}</small>}
       <Button type="submit" moreClasses="mx-auto px-4 mt-4" disabled={state === "submitting"}>
         {state === "submitting" ? "Logging..." : "Login"}
       </Button>
-      <p className="small text-center mt-4 mb-0">
-        Don't have an account?{" "}
-        <Link style={{ color: "var(--main-color)", fontWeight: "500" }} to="/register">
-          Create an account
-        </Link>
-      </p>
+      <div>
+        <p className="small text-center mt-2 mb-2">
+          <Link style={{ color: "var(--main-color)", fontWeight: "500" }} to="/forgot-password">
+            Forgot my password
+          </Link>
+        </p>
+        <p className="small text-center mb-0">
+          Don't have an account?{" "}
+          <Link style={{ color: "var(--main-color)", fontWeight: "500" }} to="/register">
+            Create an account
+          </Link>
+        </p>
+      </div>
     </Form>
   );
 }

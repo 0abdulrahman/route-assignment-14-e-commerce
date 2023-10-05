@@ -1,6 +1,7 @@
 import axios from "axios";
 import { userContext } from "./UserContext";
 import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const { createContext, useContext, useState, useEffect, useCallback } = require("react");
 
@@ -13,28 +14,32 @@ function CartProvider({ children }) {
   const [cart, setCart] = useState(null);
   const [loading, setLoading] = useState(false);
   const [orders, setOrders] = useState(null);
-  const [cartOwner, setCartOwner] = useState(null);
   const navigate = useNavigate();
 
-  async function addToCart(productId) {
-    try {
-      setLoading(true);
-      const res = await axios.post(
-        BASE_URL,
-        { productId },
-        {
-          headers: {
-            token: user?.token,
-          },
-        }
-      );
-      setCart(res);
-    } catch (error) {
-      return error;
-    } finally {
-      setLoading(false);
-    }
-  }
+  const addToCart = useCallback(
+    async (productId) => {
+      try {
+        setLoading(true);
+        const res = await axios.post(
+          BASE_URL,
+          { productId },
+          {
+            headers: {
+              token: user?.token,
+            },
+          }
+        );
+        toast.success("Product added successfully");
+        setCart(res);
+      } catch (error) {
+        toast.error("Something went wrong");
+        return error;
+      } finally {
+        setLoading(false);
+      }
+    },
+    [user?.token]
+  );
 
   async function removeFromCart(productId) {
     try {
@@ -44,8 +49,10 @@ function CartProvider({ children }) {
           token: user?.token,
         },
       });
+      toast.success("Product removed successfully");
       setCart(res);
     } catch (error) {
+      toast.error("Something went wrong");
       return error;
     } finally {
       setLoading(false);
@@ -60,8 +67,10 @@ function CartProvider({ children }) {
           token: user?.token,
         },
       });
+      toast.success("Cart cleared successfully");
       setCart(null);
     } catch (error) {
+      toast.error("Something went wrong");
       return error;
     } finally {
       setLoading(false);
@@ -84,6 +93,7 @@ function CartProvider({ children }) {
       );
       setCart(res);
     } catch (error) {
+      toast.error("Something went wrong");
       return error;
     } finally {
       setLoading(false);
@@ -104,6 +114,7 @@ function CartProvider({ children }) {
       );
       if (res.statusText === "OK") window.location.replace(res.data.session.url);
     } catch (error) {
+      toast.error("Something went wrong");
       return error;
     } finally {
       setLoading(false);
@@ -123,8 +134,10 @@ function CartProvider({ children }) {
         }
       );
       setCart(null);
+      toast.success("Order successfully made");
       if (res.statusText === "Created") navigate("/allorders");
     } catch (error) {
+      toast.error("Something went wrong");
       return error;
     } finally {
       setLoading(false);
@@ -140,7 +153,7 @@ function CartProvider({ children }) {
         },
       });
       setCart(res);
-      setCartOwner(res.data.data.cartOwner);
+      localStorage.setItem("cartOwner", res?.data?.data.cartOwner);
     } catch (error) {
     } finally {
       setLoading(false);
@@ -150,18 +163,21 @@ function CartProvider({ children }) {
   const getOrders = useCallback(async () => {
     try {
       setLoading(true);
-      const res = await axios(`https://ecommerce.routemisr.com/api/v1/orders/user/${cartOwner}`, {
-        headers: {
-          token: user?.token,
-        },
-      });
+      const res = await axios(
+        `https://ecommerce.routemisr.com/api/v1/orders/user/${localStorage.getItem("cartOwner")}`,
+        {
+          headers: {
+            token: user?.token,
+          },
+        }
+      );
       setOrders(res);
     } catch (error) {
       return error;
     } finally {
       setLoading(false);
     }
-  }, [user?.token, cartOwner]);
+  }, [user?.token]);
 
   useEffect(() => {
     (async () => {

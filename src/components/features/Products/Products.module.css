@@ -66,7 +66,14 @@
 }
 
 .product .buttons .addToWish button {
+  background-color: #fff;
+  color: var(--red);
+  box-shadow: 0 0 0 1px var(--red);
+}
+
+.product .buttons .addedToWish button {
   background-color: var(--red);
+  color: #fff;
 }
 
 .product:hover .buttons > * {
@@ -79,7 +86,13 @@
 }
 
 .product .buttons .addToWish small {
+  background-color: var(--red);
+  color: #fff;
+}
+
+.product .buttons .addedToWish small {
   color: var(--red);
+  background-color: #fff;
 }
 
 .product .buttons small {
@@ -97,11 +110,11 @@
   overflow: hidden;
   padding: 0;
   transition: 0.3s;
-  font-size: calc(0.7rem + 0.25vw);
+  font-size: calc(0.7rem + 0.1vw);
 }
 
 .product .buttons > *:hover small {
-  max-width: 170px;
+  max-width: 180px;
   padding: 0.5rem;
   padding-inline: 0.75rem;
   padding-left: 45px;

@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { userContext } from "../../../context/UserContext";
+import styles from "./Register.module.css";
 
 function Register() {
   const [error, setError] = useState("");
@@ -83,93 +84,95 @@ function Register() {
   }
 
   return (
-    <form
-      method="POST"
-      className="container mt-5 d-flex flex-column gap-3"
-      style={{ maxWidth: "50rem" }}
-      onSubmit={formik.handleSubmit}
-    >
-      <h2 className="text-center border-bottom border-bottom-1 pb-4">Create an account</h2>
-      <div className="form-group">
-        <label htmlFor="name">Name:</label>
-        <input
-          type="text"
-          className={`form-control ${formik.errors.name && formik.touched.name ? "is-invalid" : ""}`}
-          id="name"
-          value={formik.values.name}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        <p className="invalid-feedback mb-0">{formik.errors.name}</p>
-      </div>
-      <div className="form-group">
-        <label htmlFor="email">Email:</label>
-        <input
-          type="email"
-          className={`form-control ${formik.errors.email && formik.touched.email ? "is-invalid" : ""}`}
-          id="email"
-          value={formik.values.email}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        <p className="invalid-feedback mb-0">{formik.errors.email}</p>
-      </div>
-      <div className="form-group">
-        <label htmlFor="phone">Phone number:</label>
-        <input
-          type="tel"
-          className={`form-control ${formik.errors.phone && formik.touched.phone ? "is-invalid" : ""}`}
-          id="phone"
-          value={formik.values.phone}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        <p className="invalid-feedback mb-0">{formik.errors.phone}</p>
-      </div>
-      <div className="form-group">
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          className={`form-control ${formik.errors.password && formik.touched.password ? "is-invalid" : ""}`}
-          id="password"
-          value={formik.values.password}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        <p className="invalid-feedback mb-0">{formik.errors.password}</p>
-      </div>
-      <div className="form-group">
-        <label htmlFor="rePassword">Password confirmation:</label>
-        <input
-          type="password"
-          className={`form-control ${formik.errors.rePassword && formik.touched.rePassword ? "is-invalid" : ""}`}
-          id="rePassword"
-          value={formik.values.rePassword}
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-        />
-        <p className="invalid-feedback mb-0">{formik.errors.rePassword}</p>
-      </div>
-      {error && <p className="alert alert-danger py-1 text-center mb-0">{error}</p>}
-      <div className="d-flex justify-content-center gap-2 mt-4">
-        <Button moreClasses="px-4" type="submit" disabled={!formik.isValid || !formik.dirty || loading}>
-          {loading ? "Creating" : "Create"}
-        </Button>
-        <Button
-          moreStyles={{ "--color": "var(--main-color)", "--background-color": "#fff" }}
-          type="reset"
-          handleClick={handleReset}
-        >
-          Reset
-        </Button>
-      </div>
-      <p className="small text-center mt-4 mb-0">
-        Already have an account?{" "}
-        <Link style={{ color: "var(--main-color)", fontWeight: "500" }} to="/login">
-          Login
-        </Link>
-      </p>
-    </form>
+    <section className="container mt-5">
+      <form
+        method="POST"
+        className={`d-flex flex-column gap-3 ${styles.form}`}
+        style={{ maxWidth: "50rem" }}
+        onSubmit={formik.handleSubmit}
+      >
+        <h2 className="text-center border-bottom border-bottom-1 pb-4">Create an account</h2>
+        <div className="form-group">
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            className={`form-control ${formik.errors.name && formik.touched.name ? "is-invalid" : ""}`}
+            id="name"
+            value={formik.values.name}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <p className="invalid-feedback mb-0">{formik.errors.name}</p>
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            className={`form-control ${formik.errors.email && formik.touched.email ? "is-invalid" : ""}`}
+            id="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <p className="invalid-feedback mb-0">{formik.errors.email}</p>
+        </div>
+        <div className="form-group">
+          <label htmlFor="phone">Phone number:</label>
+          <input
+            type="tel"
+            className={`form-control ${formik.errors.phone && formik.touched.phone ? "is-invalid" : ""}`}
+            id="phone"
+            value={formik.values.phone}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <p className="invalid-feedback mb-0">{formik.errors.phone}</p>
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            className={`form-control ${formik.errors.password && formik.touched.password ? "is-invalid" : ""}`}
+            id="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <p className="invalid-feedback mb-0">{formik.errors.password}</p>
+        </div>
+        <div className="form-group">
+          <label htmlFor="rePassword">Password confirmation:</label>
+          <input
+            type="password"
+            className={`form-control ${formik.errors.rePassword && formik.touched.rePassword ? "is-invalid" : ""}`}
+            id="rePassword"
+            value={formik.values.rePassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          />
+          <p className="invalid-feedback mb-0">{formik.errors.rePassword}</p>
+        </div>
+        {error && <p className="alert alert-danger py-1 text-center mb-0">{error}</p>}
+        <div className="d-flex justify-content-center gap-2 mt-4">
+          <Button moreClasses="px-4" type="submit" disabled={!formik.isValid || !formik.dirty || loading}>
+            {loading ? "Creating" : "Create"}
+          </Button>
+          <Button
+            moreStyles={{ "--color": "var(--main-color)", "--background-color": "#fff" }}
+            type="reset"
+            handleClick={handleReset}
+          >
+            Reset
+          </Button>
+        </div>
+        <p className="small text-center mt-4 mb-0">
+          Already have an account?{" "}
+          <Link style={{ color: "var(--main-color)", fontWeight: "500" }} to="/login">
+            Login
+          </Link>
+        </p>
+      </form>
+    </section>
   );
 }
 

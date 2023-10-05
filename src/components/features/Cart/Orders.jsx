@@ -18,7 +18,7 @@ function Orders() {
 
   useEffect(() => {
     (async () => {
-      await await getOrders();
+      await getOrders();
     })();
   }, [getOrders]);
 

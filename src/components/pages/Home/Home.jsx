@@ -47,7 +47,7 @@ function Home() {
         <CategoriesSlider />
       </section>
       <section className="container">
-        {error && <p className="text-danger mb-0">Couldn't fetch the data</p>}
+        {error && <p className="text-danger mb-0">Couldn't get the products, please refresh the page.</p>}
         {loading && <Spinner />}
         <ProductsList products={products} />
       </section>

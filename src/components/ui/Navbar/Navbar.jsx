@@ -8,6 +8,7 @@ import { useContext } from "react";
 import { userContext } from "../../context/UserContext";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { CartContext } from "../../context/CartContext";
+import toast from "react-hot-toast";
 
 function Navbar() {
   const { user, setUser } = useContext(userContext);
@@ -16,6 +17,7 @@ function Navbar() {
 
   function handleLogout() {
     setUser(null);
+    toast.success("Logged out successfully");
     localStorage.removeItem("userToken");
     navigate("/login");
   }
@@ -59,11 +61,20 @@ function Navbar() {
                   Brands
                 </NavLink>
               </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/allorders">
-                  Orders
-                </NavLink>
-              </li>
+              {user && (
+                <>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/wishlist">
+                      Wishlist
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/allorders">
+                      Orders
+                    </NavLink>
+                  </li>
+                </>
+              )}
             </ul>
             <div className={`${styles.socials} d-flex align-items-center gap-4`}>
               <ul className="d-flex list-unstyled gap-3 fs-5 mb-0">
@@ -88,13 +99,15 @@ function Navbar() {
                   </a>
                 </li>
               </ul>
-              <Link
-                to="/cart"
-                className={styles.cartButton}
-                data-cart-items={cart?.data?.numOfCartItems ? cart?.data?.numOfCartItems : ""}
-              >
-                <AiOutlineShoppingCart />
-              </Link>
+              {user && (
+                <Link
+                  to="/cart"
+                  className={styles.cartButton}
+                  data-cart-items={cart?.data?.numOfCartItems ? cart?.data?.numOfCartItems : ""}
+                >
+                  <AiOutlineShoppingCart />
+                </Link>
+              )}
               {user ? (
                 <Button
                   handleClick={handleLogout}

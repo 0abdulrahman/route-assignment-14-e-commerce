@@ -15,6 +15,8 @@ import Cart from "./components/features/Cart/Cart";
 import CartLayout from "./components/pages/CartLayout";
 import Checkout from "./components/features/Cart/Checkout";
 import Orders from "./components/features/Cart/Orders";
+import Wishlist from "./components/features/Wishlist/Wishlist";
+import ForgotPassword from "./components/features/Authentication/Login/ForgotPassword";
 
 const router = createBrowserRouter(
   [
@@ -38,9 +40,11 @@ const router = createBrowserRouter(
             { path: "checkout", element: <Checkout /> },
           ],
         },
+        { path: "wishlist", element: <Wishlist /> },
         { path: "allorders", element: <Orders /> },
         { path: "register", element: <Register /> },
         { path: "login", element: <Login />, action: loginAction },
+        { path: "forgot-password", element: <ForgotPassword /> },
       ],
     },
   ],

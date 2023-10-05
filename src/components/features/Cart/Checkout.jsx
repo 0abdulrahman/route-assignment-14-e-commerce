@@ -1,5 +1,5 @@
 import styles from "./Cart.module.css";
-import { BsArrowUpRightSquareFill, BsFillTelephoneFill } from "react-icons/bs";
+import { BsFillTelephoneFill } from "react-icons/bs";
 import { BiSolidCity } from "react-icons/bi";
 import Button from "../../ui/Button/Button";
 import { useContext, useState } from "react";
@@ -104,8 +104,7 @@ function Checkout() {
         </div>
       </div>
       <Button type="submit" disabled={!formik.isValid || !formik.dirty}>
-        Proceed to payment
-        <BsArrowUpRightSquareFill />
+        Continue
       </Button>
     </form>
   );

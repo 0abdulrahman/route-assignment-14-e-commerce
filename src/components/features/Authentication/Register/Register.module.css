@@ -1,0 +1,11 @@
+.form {
+  background-color: var(--lighter-gray);
+  max-width: 30rem;
+  padding: calc(1rem + 2vw);
+  margin-top: 5rem;
+  margin-inline: auto;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

@@ -19,6 +19,11 @@
   overflow: hidden;
 }
 
+.form .forgotInputGroup {
+  flex-direction: column;
+  border: none;
+}
+
 .form .inputGroup label {
   background-color: var(--main-color);
   color: #fff;
@@ -30,8 +35,21 @@
   font-size: calc(1rem + 0.5vw);
 }
 
+.form .forgotInputGroup label {
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  font-size: 1rem;
+  color: var(--dark-gray);
+  margin-bottom: 1rem;
+}
+
 .form .inputGroup input {
   flex-grow: 1;
   padding-left: 0.5rem;
   background-color: #fff;
+}
+
+.form .forgotInputGroup input {
+  padding: calc(1rem + 0.25vw);
 }

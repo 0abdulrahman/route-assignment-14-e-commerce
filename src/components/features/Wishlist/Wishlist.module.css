@@ -1,0 +1,28 @@
+.wishlist {
+  background-color: var(--lighter-gray);
+  border-radius: 10px;
+  margin-top: 4rem;
+  padding: 1.5rem;
+}
+
+.wishlist .img {
+  height: 300px;
+  background-color: var(--main-color);
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-bottom: 2px solid var(--lighter-gray);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wishlist .img img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.wishlist :global(.col) > a {
+  background-color: white;
+}

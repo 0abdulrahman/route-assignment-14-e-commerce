@@ -2,12 +2,18 @@ import axios from "axios";
 import { useLoaderData } from "react-router-dom";
 import styles from "./Products.module.css";
 import { AiFillStar } from "react-icons/ai";
+import Button from "../../ui/Button/Button";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import Spinner from "../../ui/Spinner/Spinner";
 
 function Product() {
   const product = useLoaderData();
+  const { addToCart, loading } = useContext(CartContext);
 
   return (
     <section className="container mt-5">
+      {loading && <Spinner />}
       <div className="row g-3 g-md-5">
         <div className="col-12 col-md-4">
           <div className="overflow-hidden rounded-2">
@@ -31,6 +37,9 @@ function Product() {
               <AiFillStar /> {product.ratingsAverage}
             </span>
           </div>
+          <Button handleClick={() => addToCart(product._id)} moreClasses="mt-3">
+            Add to cart
+          </Button>
         </div>
       </div>
     </section>
