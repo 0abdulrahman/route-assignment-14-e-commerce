@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/route-assignment-14-e-commerce/static/css/main.9c05b303.css",
-    "main.js": "/route-assignment-14-e-commerce/static/js/main.4270d0be.js",
+    "main.css": "/route-assignment-14-e-commerce/static/css/main.fedf51bf.css",
+    "main.js": "/route-assignment-14-e-commerce/static/js/main.de011492.js",
     "static/media/child.png": "/route-assignment-14-e-commerce/static/media/child.94ed8076415fc81ae19f.png",
     "static/media/purepng.com-mastercard-logologobrand-logoiconslogos-251519938372dnf77.png": "/route-assignment-14-e-commerce/static/media/purepng.com-mastercard-logologobrand-logoiconslogos-251519938372dnf77.80a52eb6701e1bd8f4dc.png",
     "static/media/slider-image-1.jpeg": "/route-assignment-14-e-commerce/static/media/slider-image-1.3c3940ee0f1c3b17ff9a.jpeg",
@@ -20,11 +20,11 @@
     "static/media/men.webp": "/route-assignment-14-e-commerce/static/media/men.0f93c05c68b867e8ff36.webp",
     "static/media/freshcart-logo.svg": "/route-assignment-14-e-commerce/static/media/freshcart-logo.53f7a424c3aedc30a0fb46dc2278137c.svg",
     "index.html": "/route-assignment-14-e-commerce/index.html",
-    "main.9c05b303.css.map": "/route-assignment-14-e-commerce/static/css/main.9c05b303.css.map",
-    "main.4270d0be.js.map": "/route-assignment-14-e-commerce/static/js/main.4270d0be.js.map"
+    "main.fedf51bf.css.map": "/route-assignment-14-e-commerce/static/css/main.fedf51bf.css.map",
+    "main.de011492.js.map": "/route-assignment-14-e-commerce/static/js/main.de011492.js.map"
   },
   "entrypoints": [
-    "static/css/main.9c05b303.css",
-    "static/js/main.4270d0be.js"
+    "static/css/main.fedf51bf.css",
+    "static/js/main.de011492.js"
   ]
 }
