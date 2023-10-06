@@ -1,0 +1,42 @@
+.categories > div,
+.categoryProducts {
+  margin-top: 3rem;
+  border-radius: 10px;
+  background-color: var(--lighter-gray);
+}
+
+.categories .category .img {
+  flex-grow: 1;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  min-height: 240px;
+}
+
+.categories .category .img::after {
+  position: absolute;
+  content: "";
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.categories .category:hover .img::after {
+  opacity: 1;
+}
+
+.subCategories li a {
+  padding-inline: 0.75rem;
+  padding-block: 0.5rem;
+  display: block;
+  transition: 0.3s;
+}
+
+.subCategories li:not(:last-child) a {
+  border-bottom: 1px solid #dee2e6;
+}
+
+.subCategories li a:hover {
+  background-color: var(--light-main);
+}

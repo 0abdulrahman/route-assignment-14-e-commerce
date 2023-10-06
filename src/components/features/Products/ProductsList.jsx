@@ -5,7 +5,7 @@ import ProductItem from "./ProductItem";
 import Spinner from "./../../ui/Spinner/Spinner";
 
 function ProductsList({ products }) {
-  const { addToCart } = useContext(CartContext);
+  const { addToCart, loading: cartLoading } = useContext(CartContext);
   const { addToWishlist, removeFromWishlist, getWishlist, wishlist, loading } = useContext(WishlistContext);
 
   function handleAddToCart(e, productId) {
@@ -28,8 +28,8 @@ function ProductsList({ products }) {
   }, [getWishlist]);
 
   return (
-    <ul className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 row-cols-xxl-6 g-4 list-unstyled">
-      {loading && <Spinner />}
+    <ul className="row row-cols-2 row-cols-sm-3 row-cols-lg-4 row-cols-xxl-6 g-1 g-sm-2 g-lg-3 list-unstyled">
+      {(loading || cartLoading) && <Spinner />}
       {products?.map((product) => (
         <ProductItem
           product={product}

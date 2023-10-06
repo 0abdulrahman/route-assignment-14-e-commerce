@@ -1,10 +1,15 @@
 :root {
   --main-color: #08ac0a;
-  --dark-gray: #292929;
+  --light-main: rgba(8, 172, 11, 0.3);
+  --dark-gray: #333;
   --gold: goldenrod;
   --red: #cf0000;
   --lighter-gray: #f0f3f2;
   --light-gray: #9e9e9e;
+}
+
+body {
+  color: #333;
 }
 
 #root {
@@ -31,6 +36,11 @@ input,
 textarea {
   border: none;
   background-color: transparent;
+}
+
+.form-control:focus {
+  box-shadow: 0 0 0 0.25rem rgba(9, 204, 35, 0.082);
+  border-color: #0bb90e80;
 }
 
 ul {
@@ -60,4 +70,17 @@ button svg {
 
 .main-bg {
   background-color: var(--main-color);
+}
+
+.breadcrumb-item {
+  transition: 0.3s;
+}
+
+.breadcrumb-item:hover {
+  color: var(--main-color);
+}
+
+::selection {
+  background-color: #009600;
+  color: #fff;
 }

@@ -18,8 +18,8 @@ function WishlistItem({ product }) {
         className="d-flex flex-column align-items-center gap-3 border rounded-2 p-2 h-100"
         to={`/products/${product._id}`}
       >
-        <div className={styles.img}>
-          <img src={product.imageCover} alt="" />
+        <div className={`${styles.img} border overflow-hidden w-100`}>
+          <img src={product.imageCover} alt="" style={{ scale: "1.1" }} />
         </div>
         <div className="d-flex flex-column flex-grow-1">
           <h4 className="h6">

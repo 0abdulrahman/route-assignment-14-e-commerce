@@ -7,6 +7,9 @@ import ProductsProvider from "./components/context/ProductsContext";
 import CartProvider from "./components/context/CartContext";
 import WishlistProvider from "./components/context/WishlistContext";
 import { Toaster } from "react-hot-toast";
+import CategoriesProvider from "./components/context/CategoriesContext";
+import ScrollToTop from "./components/helpers/ScrollToTop";
+import BrandsProvider from "./components/context/BrandsContext";
 
 function App() {
   const { state } = useNavigation();
@@ -17,17 +20,21 @@ function App() {
         <ProductsProvider>
           <CartProvider>
             <WishlistProvider>
-              <Navbar />
-              <main style={{ marginBlock: "60px", flexGrow: 1, position: "relative" }}>
-                {state === "loading" && <Spinner />}
-                <Outlet />
-              </main>
-              <Toaster />
+              <CategoriesProvider>
+                <BrandsProvider>
+                  <Navbar />
+                  <main style={{ marginBlock: "60px", flexGrow: 1, position: "relative" }}>
+                    {state === "loading" && <Spinner />}
+                    <Outlet />
+                  </main>
+                </BrandsProvider>
+              </CategoriesProvider>
             </WishlistProvider>
           </CartProvider>
         </ProductsProvider>
       </UserProvider>
-
+      <Toaster />
+      <ScrollToTop />
       <Footer />
     </>
   );

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Products.module.css";
 import { AiFillStar } from "react-icons/ai";
-import { IoMdAdd } from "react-icons/io";
-import { FaHeartCircleCheck, FaHeartCirclePlus } from "react-icons/fa6";
+import { FaHeartCircleCheck, FaHeartCirclePlus, FaCartPlus } from "react-icons/fa6";
 
 function ProductItem({ product, handleAddToCart, handleAddToWish, handleRemoveFromWishlist, wishlist }) {
   const inWishlist = wishlist?.data?.data.find((el) => el._id === product._id) ? true : false;
@@ -10,7 +9,7 @@ function ProductItem({ product, handleAddToCart, handleAddToWish, handleRemoveFr
   return (
     <li className={`${styles.product} col`}>
       <Link to={`/products/${product._id}`}>
-        <div className={`${styles.productImg} mb-2`}>
+        <div className={`${styles.productImg}`}>
           <img src={product.imageCover} alt={product.title} className="objectFit-cover" />
         </div>
         <div className={styles.text}>
@@ -22,7 +21,7 @@ function ProductItem({ product, handleAddToCart, handleAddToWish, handleRemoveFr
           </h4>
           <div className={`d-flex justify-content-between align-items-center ${styles.footer}`}>
             <p className="mb-0 fw-semibold">{product.price} EGP</p>
-            <span>
+            <span style={{ whiteSpace: "nowrap" }}>
               <AiFillStar /> {product.ratingsAverage}
             </span>
           </div>
@@ -31,7 +30,7 @@ function ProductItem({ product, handleAddToCart, handleAddToWish, handleRemoveFr
         <div className={styles.buttons}>
           <div className={styles.addToCart} onClick={(e) => handleAddToCart(e, product._id)}>
             <button>
-              <IoMdAdd />
+              <FaCartPlus />
             </button>{" "}
             <small>Add to cart</small>
           </div>
@@ -40,7 +39,7 @@ function ProductItem({ product, handleAddToCart, handleAddToWish, handleRemoveFr
             onClick={(e) => (inWishlist ? handleRemoveFromWishlist(e, product._id) : handleAddToWish(e, product._id))}
           >
             <button>{inWishlist ? <FaHeartCircleCheck /> : <FaHeartCirclePlus />}</button>{" "}
-            <small>{inWishlist ? "Remove from wishlist" : "Add to wishlist"}</small>
+            <small>{inWishlist ? "Added to wishlist" : "Add to wishlist"}</small>
           </div>
         </div>
       </Link>

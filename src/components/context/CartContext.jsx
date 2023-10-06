@@ -18,6 +18,10 @@ function CartProvider({ children }) {
 
   const addToCart = useCallback(
     async (productId) => {
+      if (!user?.token) {
+        toast.error("Please login first");
+        return;
+      }
       try {
         setLoading(true);
         const res = await axios.post(
@@ -29,7 +33,7 @@ function CartProvider({ children }) {
             },
           }
         );
-        toast.success("Product added successfully");
+        toast.success("Product has been added to your cart");
         setCart(res);
       } catch (error) {
         toast.error("Something went wrong");
@@ -145,6 +149,7 @@ function CartProvider({ children }) {
   }
 
   const getUserCart = useCallback(async () => {
+    if (!user?.token) return;
     try {
       setLoading(true);
       const res = await axios(BASE_URL, {

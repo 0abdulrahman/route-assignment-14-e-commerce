@@ -6,6 +6,7 @@ import Button from "../../../ui/Button/Button";
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { userContext } from "../../../context/UserContext";
+import SmallSpinner from "../../../ui/SmallSpinner/SmallSpinner";
 
 function Login() {
   const { state } = useNavigation();
@@ -42,7 +43,7 @@ function Login() {
       </div>
       {actionData?.status === "error" && <small className="alert alert-danger py-2 m-0">{actionData?.data}</small>}
       <Button type="submit" moreClasses="mx-auto px-4 mt-4" disabled={state === "submitting"}>
-        {state === "submitting" ? "Logging..." : "Login"}
+        {state === "submitting" ? <SmallSpinner /> : "Login"}
       </Button>
       <div>
         <p className="small text-center mt-2 mb-2">

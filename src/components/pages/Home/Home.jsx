@@ -4,35 +4,32 @@ import img_2 from "../../../assets/images/parmesan-crumbed-chicken-schnitzel-fri
 import styles from "./Home.module.css";
 import CategoriesSlider from "./CategoriesSlider";
 import ProductsList from "../../features/Products/ProductsList";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
-import axios from "axios";
 import Spinner from "../../ui/Spinner/Spinner";
+import { CategoriesContext } from "../../context/CategoriesContext";
 
 function Home() {
-  const { products, setProducts } = useContext(ProductsContext);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { products, getProducts, loading, error } = useContext(ProductsContext);
+  const {
+    categories,
+    getCategories,
+    loading: categoriesLoading,
+    error: categoriesError,
+  } = useContext(CategoriesContext);
 
   useEffect(() => {
-    async function getProducts() {
-      try {
-        setLoading(true);
-        const res = await axios.get("https://ecommerce.routemisr.com/api/v1/products");
-        setProducts(res.data.data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
+    if (!categories?.length > 0) {
+      getCategories();
     }
-    if (products.length > 0) return;
+    if (products?.length > 0) return;
     getProducts();
-  }, [setProducts, products.length]);
+  }, [products?.length, getProducts, categories?.length, getCategories]);
 
   return (
     <>
       <section className={styles.mainSlider}>
+        {(loading || categoriesLoading) && <Spinner />}
         <MainSlider />
         <div className={styles.images}>
           <div style={{ width: "300px", height: "300px" }}>
@@ -44,11 +41,13 @@ function Home() {
         </div>
       </section>
       <section className={`${styles.categoriesSlider} container`}>
-        <CategoriesSlider />
+        {categories && <CategoriesSlider categories={categories} />}
+        {categoriesError && (
+          <p className="text-center text-danger my-5">Couldn't get the categories, please refresh the page.</p>
+        )}
       </section>
       <section className="container">
-        {error && <p className="text-danger mb-0">Couldn't get the products, please refresh the page.</p>}
-        {loading && <Spinner />}
+        {error && <p className="text-center text-danger my-5">Couldn't get the products, please refresh the page.</p>}
         <ProductsList products={products} />
       </section>
     </>

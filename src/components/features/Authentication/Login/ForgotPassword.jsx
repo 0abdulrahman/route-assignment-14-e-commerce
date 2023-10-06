@@ -18,6 +18,8 @@ function ForgotPassword() {
         ? response?.data?.data?.status === "Success"
           ? await resetPassword(Object.fromEntries(formData))
           : await confirmResetCode(Object.fromEntries(formData).resetCode)
+        : response?.data?.response?.data.message === "Reset code is invalid or has expired"
+        ? await confirmResetCode(Object.fromEntries(formData).resetCode)
         : await forgotPassword(Object.fromEntries(formData).email);
     setResponse(res);
   }

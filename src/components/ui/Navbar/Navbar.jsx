@@ -12,8 +12,8 @@ import toast from "react-hot-toast";
 
 function Navbar() {
   const { user, setUser } = useContext(userContext);
-  const navigate = useNavigate();
   const { cart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   function handleLogout() {
     setUser(null);
@@ -21,6 +21,7 @@ function Navbar() {
     localStorage.removeItem("userToken");
     navigate("/login");
   }
+
   return (
     <header className="fixed-top bg-body-tertiary">
       <nav className="navbar navbar-expand-lg container">
@@ -76,8 +77,8 @@ function Navbar() {
                 </>
               )}
             </ul>
-            <div className={`${styles.socials} d-flex align-items-center gap-4`}>
-              <ul className="d-flex list-unstyled gap-3 fs-5 mb-0">
+            <div className={`${styles.socials} mt-5 mt-lg-0 d-flex align-items-center gap-4 flex-wrap`}>
+              <ul className="d-flex list-unstyled gap-3 fs-5 mb-0 me-auto me-lg-0">
                 <li>
                   <a href="https://www.instagram.com">
                     <FaInstagram />

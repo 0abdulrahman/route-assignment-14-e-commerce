@@ -13,6 +13,7 @@ function WishlistProvider({ children }) {
   const [loading, setLoading] = useState(false);
 
   const getWishlist = useCallback(async () => {
+    if (!user?.token) return;
     try {
       setLoading(true);
       const res = await axios(BASE_URL, {
@@ -51,6 +52,10 @@ function WishlistProvider({ children }) {
 
   const addToWishlist = useCallback(
     async (productId) => {
+      if (!user?.token) {
+        toast.error("Please login first");
+        return;
+      }
       try {
         setLoading(true);
         await axios.post(

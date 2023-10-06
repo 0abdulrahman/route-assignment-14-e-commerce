@@ -1,0 +1,13 @@
+.brands {
+  margin-top: 3rem;
+  border-radius: 10px;
+  background-color: var(--lighter-gray);
+}
+
+.brands .brand {
+  transition: 0.3s;
+}
+
+.brands .brand:hover {
+  box-shadow: 0 0 0 1px var(--main-color), 0 0 40px rgba(0, 80, 13, 0.2);
+}

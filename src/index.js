@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider, createHashRouter } from "react-router-dom";
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
@@ -17,39 +17,79 @@ import Checkout from "./components/features/Cart/Checkout";
 import Orders from "./components/features/Cart/Orders";
 import Wishlist from "./components/features/Wishlist/Wishlist";
 import ForgotPassword from "./components/features/Authentication/Login/ForgotPassword";
+import NotFound from "./components/pages/NotFound";
+import AuthGuard from "./components/features/Authentication/AuthGuard";
+import CategoriesLayout from "./components/pages/CategoriesLayout";
+import Categories from "./components/features/Categories/Categories";
+import Category from "./components/features/Categories/Category";
+import BrandsLayout from "./components/pages/BrandsLayout";
+import Brands from "./components/features/Brands/Brands";
+import Brand from "./components/features/Brands/Brand";
 
-const router = createBrowserRouter(
-  [
-    {
-      element: <App />,
-      children: [
-        { index: true, element: <Home /> },
-        {
-          path: "products",
-          element: <ProductsLayout />,
-          children: [
-            { index: true, element: <Products /> },
-            { path: ":productId", element: <Product />, loader: productLoader },
-          ],
-        },
-        {
-          path: "cart",
-          element: <CartLayout />,
-          children: [
-            { index: true, element: <Cart /> },
-            { path: "checkout", element: <Checkout /> },
-          ],
-        },
-        { path: "wishlist", element: <Wishlist /> },
-        { path: "allorders", element: <Orders /> },
-        { path: "register", element: <Register /> },
-        { path: "login", element: <Login />, action: loginAction },
-        { path: "forgot-password", element: <ForgotPassword /> },
-      ],
-    },
-  ],
-  { basename: "/route-assignment-14-e-commerce" }
-);
+const router = createHashRouter([
+  {
+    element: <App />,
+    children: [
+      { index: true, element: <Home /> },
+      {
+        path: "products",
+        element: <ProductsLayout />,
+        children: [
+          { index: true, element: <Products /> },
+          { path: ":productId", element: <Product />, loader: productLoader },
+        ],
+      },
+      {
+        path: "categories",
+        element: <CategoriesLayout />,
+        children: [
+          { index: true, element: <Categories /> },
+          { path: ":categorySlug", element: <Category /> },
+        ],
+      },
+      {
+        path: "brands",
+        element: <BrandsLayout />,
+        children: [
+          { index: true, element: <Brands /> },
+          { path: ":brandId", element: <Brand /> },
+        ],
+      },
+      {
+        path: "cart",
+        element: (
+          <AuthGuard>
+            <CartLayout />
+          </AuthGuard>
+        ),
+        children: [
+          { index: true, element: <Cart /> },
+          { path: "checkout", element: <Checkout /> },
+        ],
+      },
+      {
+        path: "wishlist",
+        element: (
+          <AuthGuard>
+            <Wishlist />
+          </AuthGuard>
+        ),
+      },
+      {
+        path: "allorders",
+        element: (
+          <AuthGuard>
+            <Orders />
+          </AuthGuard>
+        ),
+      },
+      { path: "register", element: <Register /> },
+      { path: "login", element: <Login />, action: loginAction },
+      { path: "forgot-password", element: <ForgotPassword /> },
+      { path: "*", element: <NotFound /> },
+    ],
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(

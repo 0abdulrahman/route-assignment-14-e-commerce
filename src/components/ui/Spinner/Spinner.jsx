@@ -9,7 +9,17 @@ function Spinner({ size = "full" }) {
       }}
       className={styles.loaderContainer}
     >
-      <span className={styles.loader}>Load&nbsp;ng</span>
+      <span className={styles.loader}></span>
+      <div className={styles.dotSpinner}>
+        <div className={styles.dotSpinner__dot}></div>
+        <div className={styles.dotSpinner__dot}></div>
+        <div className={styles.dotSpinner__dot}></div>
+        <div className={styles.dotSpinner__dot}></div>
+        <div className={styles.dotSpinner__dot}></div>
+        <div className={styles.dotSpinner__dot}></div>
+        <div className={styles.dotSpinner__dot}></div>
+        <div className={styles.dotSpinner__dot}></div>
+      </div>
     </div>
   );
 }

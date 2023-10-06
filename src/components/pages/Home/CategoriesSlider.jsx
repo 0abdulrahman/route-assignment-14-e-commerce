@@ -2,15 +2,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import electronice from "../../../assets/images/categories_images/electronics.webp";
-import mobile from "../../../assets/images/categories_images/mobile.jpg";
-import men from "../../../assets/images/categories_images/men.webp";
-import women from "../../../assets/images/categories_images/women.webp";
-import beauty from "../../../assets/images/categories_images/beauty.jpg";
-import baby from "../../../assets/images/categories_images/child.png";
 import { useEffect, useState } from "react";
 
-function CategoriesSlider() {
+function CategoriesSlider({ categories }) {
   const [slides, setSlides] = useState(4);
 
   useEffect(() => {
@@ -27,7 +21,7 @@ function CategoriesSlider() {
 
   return (
     <>
-      <h2 className="fs-3 fw-normal">Shop Popular Categories</h2>
+      <h2 className="fs-3 fw-normal border-bottom pb-2 mb-2">Shop popular categories</h2>
       <Swiper
         pagination={{
           dynamicBullets: true,
@@ -36,42 +30,18 @@ function CategoriesSlider() {
         className="mySwiper"
         slidesPerView={slides}
       >
-        <SwiperSlide>
-          <div>
-            <img src={electronice} alt="Slider 1" />
-          </div>
-          <h4>Electronics</h4>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <img src={mobile} alt="Slider 2" />
-          </div>
-          <h4>Mobile</h4>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <img src={men} alt="Slider 3" />
-          </div>
-          <h4>Men</h4>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <img src={women} alt="Slider 3" />
-          </div>
-          <h4>Women</h4>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <img src={beauty} alt="Slider 3" />
-          </div>
-          <h4>Beauty & Health</h4>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div>
-            <img src={baby} alt="Slider 3" />
-          </div>
-          <h4>Baby & Toys</h4>
-        </SwiperSlide>
+        {categories.map((category) =>
+          category.name !== "Music" ? (
+            <SwiperSlide key={category._id}>
+              <div>
+                <img src={category.image} alt={category.name} />
+              </div>
+              <h4>{category.name}</h4>
+            </SwiperSlide>
+          ) : (
+            ""
+          )
+        )}
       </Swiper>
     </>
   );

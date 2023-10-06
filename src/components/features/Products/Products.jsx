@@ -1,13 +1,10 @@
 import { useContext, useEffect, useState } from "react";
 import ProductsList from "./ProductsList";
 import { ProductsContext } from "../../context/ProductsContext";
-import axios from "axios";
 import Spinner from "../../ui/Spinner/Spinner";
 
 function Products() {
-  const { products, setProducts } = useContext(ProductsContext);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const { products, getProducts, loading, error } = useContext(ProductsContext);
   const [filteredProducts, setFilteredProducts] = useState(products);
 
   function handleChange(e) {
@@ -16,25 +13,13 @@ function Products() {
   }
 
   useEffect(() => {
-    async function getProducts() {
-      try {
-        setLoading(true);
-        const res = await axios.get("https://ecommerce.routemisr.com/api/v1/products");
-        setProducts(res.data.data);
-        setFilteredProducts(res.data.data);
-      } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
-      }
-    }
-    if (products.length > 0) return;
+    if (products?.length > 0) return;
     getProducts();
-  }, [setProducts, products.length]);
+  }, [products?.length, getProducts]);
 
   return (
     <>
-      <form className="container mt-5 mb-5">
+      <form className="container mt-5 mb-4">
         <div className="form-group">
           <label htmlFor="search" className="visually-hidden">
             Search for a product
@@ -49,7 +34,7 @@ function Products() {
         </div>
       </form>
       <section className="container">
-        <ProductsList products={filteredProducts} />
+        <ProductsList products={filteredProducts || products} />
         {error && <p className="text-danger mb-0">Couldn't get the products, please refresh the page</p>}
         {loading && <Spinner />}
       </section>

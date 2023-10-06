@@ -6,6 +6,7 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import { userContext } from "../../../context/UserContext";
 import styles from "./Register.module.css";
+import SmallSpinner from "../../../ui/SmallSpinner/SmallSpinner";
 
 function Register() {
   const [error, setError] = useState("");
@@ -155,14 +156,14 @@ function Register() {
         {error && <p className="alert alert-danger py-1 text-center mb-0">{error}</p>}
         <div className="d-flex justify-content-center gap-2 mt-4">
           <Button moreClasses="px-4" type="submit" disabled={!formik.isValid || !formik.dirty || loading}>
-            {loading ? "Creating" : "Create"}
+            {loading ? <SmallSpinner /> : "Create"}
           </Button>
           <Button
             moreStyles={{ "--color": "var(--main-color)", "--background-color": "#fff" }}
             type="reset"
             handleClick={handleReset}
           >
-            Reset
+            Clear
           </Button>
         </div>
         <p className="small text-center mt-4 mb-0">
