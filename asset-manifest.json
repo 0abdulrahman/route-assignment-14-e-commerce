@@ -1,30 +1,26 @@
 {
   "files": {
-    "main.css": "/route-assignment-14-e-commerce/static/css/main.fedf51bf.css",
-    "main.js": "/route-assignment-14-e-commerce/static/js/main.de011492.js",
-    "static/media/child.png": "/route-assignment-14-e-commerce/static/media/child.94ed8076415fc81ae19f.png",
+    "main.css": "/route-assignment-14-e-commerce/static/css/main.0971bd08.css",
+    "main.js": "/route-assignment-14-e-commerce/static/js/main.85b74f29.js",
     "static/media/purepng.com-mastercard-logologobrand-logoiconslogos-251519938372dnf77.png": "/route-assignment-14-e-commerce/static/media/purepng.com-mastercard-logologobrand-logoiconslogos-251519938372dnf77.80a52eb6701e1bd8f4dc.png",
     "static/media/slider-image-1.jpeg": "/route-assignment-14-e-commerce/static/media/slider-image-1.3c3940ee0f1c3b17ff9a.jpeg",
     "static/media/parmesan-crumbed-chicken-schnitzel-fried-eggs-and-apple-cabbage-slaw-173352-2.jpg": "/route-assignment-14-e-commerce/static/media/parmesan-crumbed-chicken-schnitzel-fried-eggs-and-apple-cabbage-slaw-173352-2.1b72455a8fc1770c0237.jpg",
-    "static/media/women.webp": "/route-assignment-14-e-commerce/static/media/women.4099be70f34124a0e611.webp",
     "static/media/photo-1546069901-ba9599a7e63c.jpg": "/route-assignment-14-e-commerce/static/media/photo-1546069901-ba9599a7e63c.d3a7de324b645ffee97a.jpg",
     "static/media/slider-image-3.jpeg": "/route-assignment-14-e-commerce/static/media/slider-image-3.7e5c9f7a513f6db6dd5e.jpeg",
     "static/media/slider-image-2.jpeg": "/route-assignment-14-e-commerce/static/media/slider-image-2.e510b0de8a4d96a1d5ad.jpeg",
-    "static/media/beauty.jpg": "/route-assignment-14-e-commerce/static/media/beauty.28dee9ff72594735fd83.jpg",
-    "static/media/mobile.jpg": "/route-assignment-14-e-commerce/static/media/mobile.bebc6b0e74d21801e0c4.jpg",
+    "static/media/404.webp": "/route-assignment-14-e-commerce/static/media/404.3ef2b29e5f512fea237a.webp",
     "static/media/2560px-Amazon_Pay_logo.svg.png": "/route-assignment-14-e-commerce/static/media/2560px-Amazon_Pay_logo.svg.f1d7ed8012ba50041d47.png",
     "static/media/PayPal.svg.png": "/route-assignment-14-e-commerce/static/media/PayPal.svg.088671dded675d04af8f.png",
     "static/media/American-Express-Logo-PNG-File.png": "/route-assignment-14-e-commerce/static/media/American-Express-Logo-PNG-File.ff77910475d812e4fbe7.png",
-    "static/media/th.png": "/route-assignment-14-e-commerce/static/media/th.c16b15bdd133567b5ee4.png",
-    "static/media/electronics.webp": "/route-assignment-14-e-commerce/static/media/electronics.1125c1c605b0cfbf3550.webp",
-    "static/media/men.webp": "/route-assignment-14-e-commerce/static/media/men.0f93c05c68b867e8ff36.webp",
+    "static/media/th1.png": "/route-assignment-14-e-commerce/static/media/th1.640b0a5ffa2b946dc100.png",
+    "static/media/th2.png": "/route-assignment-14-e-commerce/static/media/th2.e48ce75c65dcf2d39ace.png",
     "static/media/freshcart-logo.svg": "/route-assignment-14-e-commerce/static/media/freshcart-logo.53f7a424c3aedc30a0fb46dc2278137c.svg",
     "index.html": "/route-assignment-14-e-commerce/index.html",
-    "main.fedf51bf.css.map": "/route-assignment-14-e-commerce/static/css/main.fedf51bf.css.map",
-    "main.de011492.js.map": "/route-assignment-14-e-commerce/static/js/main.de011492.js.map"
+    "main.0971bd08.css.map": "/route-assignment-14-e-commerce/static/css/main.0971bd08.css.map",
+    "main.85b74f29.js.map": "/route-assignment-14-e-commerce/static/js/main.85b74f29.js.map"
   },
   "entrypoints": [
-    "static/css/main.fedf51bf.css",
-    "static/js/main.de011492.js"
+    "static/css/main.0971bd08.css",
+    "static/js/main.85b74f29.js"
   ]
 }
