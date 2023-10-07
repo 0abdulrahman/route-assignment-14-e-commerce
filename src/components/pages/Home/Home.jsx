@@ -58,7 +58,6 @@ function Home() {
           handlePrev={() => getProducts(metaData?.prevPage)}
           handleNavigate={getProducts}
         />
-        <PaginationCopy />
       </section>
     </>
   );
