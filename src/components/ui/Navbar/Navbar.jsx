@@ -11,12 +11,12 @@ import { CartContext } from "../../context/CartContext";
 import toast from "react-hot-toast";
 
 function Navbar() {
-  const { user, setUser } = useContext(userContext);
-  const { cart } = useContext(CartContext);
+  const user = useContext(userContext);
+  const cart = useContext(CartContext);
   const navigate = useNavigate();
 
   function handleLogout() {
-    setUser(null);
+    user?.setUser(null);
     toast.success("Logged out successfully");
     localStorage.removeItem("userToken");
     navigate("/login");
@@ -62,7 +62,7 @@ function Navbar() {
                   Brands
                 </NavLink>
               </li>
-              {user && (
+              {user?.user && (
                 <>
                   <li className="nav-item">
                     <NavLink className="nav-link" to="/wishlist">
@@ -100,16 +100,16 @@ function Navbar() {
                   </a>
                 </li>
               </ul>
-              {user && (
+              {user?.user && (
                 <Link
                   to="/cart"
                   className={styles.cartButton}
-                  data-cart-items={cart?.data?.numOfCartItems ? cart?.data?.numOfCartItems : ""}
+                  data-cart-items={cart?.cart?.data?.numOfCartItems ? cart?.cart?.data?.numOfCartItems : ""}
                 >
                   <AiOutlineShoppingCart />
                 </Link>
               )}
-              {user ? (
+              {user?.user ? (
                 <Button
                   handleClick={handleLogout}
                   moreStyles={{

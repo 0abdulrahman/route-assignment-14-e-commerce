@@ -6,8 +6,8 @@ function Button({
   handleClick = null,
   to = "/",
   disabled = false,
-  moreStyles,
-  moreClasses,
+  moreStyles = null,
+  moreClasses = "",
   children = "Submit",
 }) {
   if (type === "link")

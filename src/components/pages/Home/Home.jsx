@@ -8,9 +8,11 @@ import { useContext, useEffect } from "react";
 import { ProductsContext } from "../../context/ProductsContext";
 import Spinner from "../../ui/Spinner/Spinner";
 import { CategoriesContext } from "../../context/CategoriesContext";
+import Pagination from "../../ui/Pagination/Pagination";
 
 function Home() {
-  const { products, getProducts, loading, error } = useContext(ProductsContext);
+  const { products, getProducts, metaData, loading, error } = useContext(ProductsContext);
+
   const {
     categories,
     getCategories,
@@ -49,6 +51,12 @@ function Home() {
       <section className="container">
         {error && <p className="text-center text-danger my-5">Couldn't get the products, please refresh the page.</p>}
         <ProductsList products={products} />
+        <Pagination
+          metaData={metaData}
+          handleNext={() => getProducts(metaData?.nextPage)}
+          handlePrev={() => getProducts(metaData?.prevPage)}
+          handleNavigate={getProducts}
+        />
       </section>
     </>
   );

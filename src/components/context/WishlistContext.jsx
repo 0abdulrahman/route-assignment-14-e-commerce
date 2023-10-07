@@ -69,7 +69,7 @@ function WishlistProvider({ children }) {
             },
           }
         );
-        toast.success("Product has been add to your wishlist");
+        toast.success("Product has been added to your wishlist");
         getWishlist();
       } catch (error) {
         toast.error("Something went wrong");

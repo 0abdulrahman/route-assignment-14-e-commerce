@@ -1,0 +1,17 @@
+:global(.pagination) {
+  --bs-pagination-active-bg: var(--main-color);
+  --bs-pagination-active-border-color: var(--main-color);
+  --bs-pagination-active-color: #fff;
+  --bs-pagination-hover-color: var(--main-color);
+  --bs-pagination-color: var(--dark-gray);
+}
+
+:global(button.active) {
+  color: #fff !important;
+}
+
+:global(.page-link) {
+  padding: calc(2px + 0.4vw) calc(6px + 0.4vw);
+  font-size: calc(12px + 0.2vw);
+  height: 100%;
+}

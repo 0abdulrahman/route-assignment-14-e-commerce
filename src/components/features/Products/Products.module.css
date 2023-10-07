@@ -21,7 +21,8 @@
   overflow: hidden;
 }
 
-.product > a:hover {
+.product > a:hover,
+.product > a:focus {
   box-shadow: 0 0 0 1px var(--main-color), 0 0 30px rgba(0, 80, 13, 0.2);
 }
 

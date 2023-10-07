@@ -25,10 +25,12 @@ import Category from "./components/features/Categories/Category";
 import BrandsLayout from "./components/pages/BrandsLayout";
 import Brands from "./components/features/Brands/Brands";
 import Brand from "./components/features/Brands/Brand";
+import Error from "./components/ui/Error";
 
 const router = createHashRouter([
   {
     element: <App />,
+    errorElement: <Error />,
     children: [
       { index: true, element: <Home /> },
       {
