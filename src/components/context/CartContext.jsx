@@ -108,7 +108,9 @@ function CartProvider({ children }) {
     try {
       setLoading(true);
       const res = await axios.post(
-        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart?.data?.data._id}?url=http://localhost:3000/route-assignment-14-e-commerce`,
+        `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart?.data?.data._id}?url=${
+          window.location.origin
+        }${window.location.pathname.slice(0, -1)}}`,
         { shippingAddress: formData },
         {
           headers: {

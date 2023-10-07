@@ -9,6 +9,7 @@ import { ProductsContext } from "../../context/ProductsContext";
 import Spinner from "../../ui/Spinner/Spinner";
 import { CategoriesContext } from "../../context/CategoriesContext";
 import Pagination from "../../ui/Pagination/Pagination";
+import PaginationCopy from "../../ui/Pagination/PaginationCopy";
 
 function Home() {
   const { products, getProducts, metaData, loading, error } = useContext(ProductsContext);
@@ -57,6 +58,7 @@ function Home() {
           handlePrev={() => getProducts(metaData?.prevPage)}
           handleNavigate={getProducts}
         />
+        <PaginationCopy />
       </section>
     </>
   );

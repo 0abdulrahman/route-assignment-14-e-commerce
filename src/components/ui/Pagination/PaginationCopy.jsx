@@ -2,8 +2,16 @@ import "./Pagination.module.css";
 import { useEffect, useState } from "react";
 import { MdOutlineNavigateBefore, MdOutlineNavigateNext } from "react-icons/md";
 
-function Pagination({ metaData, handleNext, handlePrev, handleNavigate }) {
+function Pagination({ handleNext, handlePrev, handleNavigate }) {
   const [onSmallScreens, setOnSmallScreens] = useState(false);
+
+  const [metaData, setMetaData] = useState({
+    currentPage: 5,
+    numberOfPages: 10,
+    limit: 40,
+    prevPage: 4,
+    nextPage: 6,
+  });
 
   useEffect(() => {
     if (window.innerWidth < 576) setOnSmallScreens(true);
@@ -17,7 +25,17 @@ function Pagination({ metaData, handleNext, handlePrev, handleNavigate }) {
           {!metaData?.prevPage ? (
             <span className="page-link">{onSmallScreens ? <MdOutlineNavigateBefore /> : "Previous"}</span>
           ) : (
-            <button className="page-link" onClick={handlePrev}>
+            <button
+              className="page-link"
+              onClick={() =>
+                setMetaData((prev) => ({
+                  ...prev,
+                  currentPage: prev.currentPage - 1,
+                  prevPage: prev.prevPage - 1,
+                  nextPage: prev.nextPage - 1,
+                }))
+              }
+            >
               {onSmallScreens ? <MdOutlineNavigateBefore /> : "Previous"}
             </button>
           )}
@@ -25,7 +43,10 @@ function Pagination({ metaData, handleNext, handlePrev, handleNavigate }) {
         {metaData?.currentPage > 5 ? (
           <>
             <li className="page-item">
-              <button className="page-link" onClick={() => handleNavigate(1)}>
+              <button
+                className="page-link"
+                onClick={() => setMetaData((prev) => ({ ...prev, currentPage: 1, prevPage: null, nextPage: 2 }))}
+              >
                 1
               </button>
             </li>
@@ -55,7 +76,7 @@ function Pagination({ metaData, handleNext, handlePrev, handleNavigate }) {
             <button
               className={`page-link ${metaData?.currentPage === i ? "active" : ""}`}
               aria-current={metaData?.currentPage === i ? "page" : ""}
-              onClick={() => handleNavigate(i)}
+              onClick={() => setMetaData((prev) => ({ ...prev, currentPage: i, prevPage: i - 1, nextPage: i + 1 }))}
             >
               {i}
             </button>
@@ -67,7 +88,10 @@ function Pagination({ metaData, handleNext, handlePrev, handleNavigate }) {
               <span className="page-link">...</span>
             </li>
             <li className="page-item">
-              <button className="page-link" onClick={() => handleNavigate(metaData?.numberOfPages)}>
+              <button
+                className="page-link"
+                onClick={() => setMetaData((prev) => ({ ...prev, currentPage: 10, prevPage: 9, nextPage: null }))}
+              >
                 {metaData?.numberOfPages}
               </button>
             </li>
@@ -79,7 +103,17 @@ function Pagination({ metaData, handleNext, handlePrev, handleNavigate }) {
           {!metaData?.nextPage ? (
             <span className="page-link">{onSmallScreens ? <MdOutlineNavigateNext /> : "Next"}</span>
           ) : (
-            <button className="page-link" onClick={handleNext}>
+            <button
+              className="page-link"
+              onClick={() =>
+                setMetaData((prev) => ({
+                  ...prev,
+                  currentPage: prev.currentPage + 1,
+                  prevPage: prev.prevPage + 1,
+                  nextPage: prev.nextPage + 1,
+                }))
+              }
+            >
               {onSmallScreens ? <MdOutlineNavigateNext /> : "Next"}
             </button>
           )}
