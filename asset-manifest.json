@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/route-assignment-14-e-commerce/static/css/main.f32c9f6c.css",
-    "main.js": "/route-assignment-14-e-commerce/static/js/main.a1ce18ae.js",
+    "main.js": "/route-assignment-14-e-commerce/static/js/main.a9ca83c3.js",
     "static/media/purepng.com-mastercard-logologobrand-logoiconslogos-251519938372dnf77.png": "/route-assignment-14-e-commerce/static/media/purepng.com-mastercard-logologobrand-logoiconslogos-251519938372dnf77.80a52eb6701e1bd8f4dc.png",
     "static/media/slider-image-1.jpeg": "/route-assignment-14-e-commerce/static/media/slider-image-1.3c3940ee0f1c3b17ff9a.jpeg",
     "static/media/parmesan-crumbed-chicken-schnitzel-fried-eggs-and-apple-cabbage-slaw-173352-2.jpg": "/route-assignment-14-e-commerce/static/media/parmesan-crumbed-chicken-schnitzel-fried-eggs-and-apple-cabbage-slaw-173352-2.1b72455a8fc1770c0237.jpg",
@@ -17,10 +17,10 @@
     "static/media/freshcart-logo.svg": "/route-assignment-14-e-commerce/static/media/freshcart-logo.53f7a424c3aedc30a0fb46dc2278137c.svg",
     "index.html": "/route-assignment-14-e-commerce/index.html",
     "main.f32c9f6c.css.map": "/route-assignment-14-e-commerce/static/css/main.f32c9f6c.css.map",
-    "main.a1ce18ae.js.map": "/route-assignment-14-e-commerce/static/js/main.a1ce18ae.js.map"
+    "main.a9ca83c3.js.map": "/route-assignment-14-e-commerce/static/js/main.a9ca83c3.js.map"
   },
   "entrypoints": [
     "static/css/main.f32c9f6c.css",
-    "static/js/main.a1ce18ae.js"
+    "static/js/main.a9ca83c3.js"
   ]
 }
