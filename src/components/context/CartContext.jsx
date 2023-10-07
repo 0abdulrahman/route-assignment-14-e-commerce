@@ -110,7 +110,7 @@ function CartProvider({ children }) {
       const res = await axios.post(
         `https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cart?.data?.data._id}?url=${
           window.location.origin
-        }${window.location.pathname.slice(0, -1)}}`,
+        }${window.location.pathname.slice(0, -1)}/#}`,
         { shippingAddress: formData },
         {
           headers: {
