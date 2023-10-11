@@ -19,7 +19,9 @@ function Error() {
           </span>
           ERROR
         </h2>
-        <p className="mt-2 text-danger fs-5">{err.data ?? err.error.message}</p>
+        <p className="mt-2 text-danger fs-5">
+          {err?.data ?? err.error?.message ?? "Something went wrong, maybe refresh the page?"}
+        </p>
       </main>
       <Footer />
     </>

@@ -19,7 +19,7 @@ function Brands() {
         <h2 className="py-3 border-bottom pb-2 m-2">Brands</h2>
         <div className="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-xl-6 g-2 py-2">
           {brands?.map((brand) => (
-            <div className="col">
+            <div className="col" key={brand._id}>
               <Link
                 className={`bg-white d-flex flex-column h-100 border rounded-2 overflow-hidden ${styles.brand}`}
                 to={`${brand.slug}?id=${brand._id}`}
